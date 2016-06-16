@@ -1,0 +1,5 @@
+SourcePaths: src
+Modules: init timer_mux eventlog msgque hostctrl_common hostctrl_omap4430 delay lagavulin_metrics lagavulin_gpio lagavulin_misc lagavulin_timer lagavulin_api lagavulin_i2c lagavulin_slowclock lagavulin_spi mq31_flash lagavulin_pmic_intctrl lagavulin_intvector lagavulin_updater lagavulin_crc lagavulin_adc_hw mq31_inout
+CFlags: -Iinclude -Iobj/coolriver_rev1 -Iconfig/coolriver_rev1 -I. -Iiarmaxq230/include -Iiarmaxq230/include/clib
+Libraries: cstartup_usr.r66 mgLib.r66 clib/clmaxq68mllc.r66
+Scatter: scatter/lagavulin_lnkmq31.xcl

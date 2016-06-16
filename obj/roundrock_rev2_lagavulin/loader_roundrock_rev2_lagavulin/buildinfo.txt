@@ -1,0 +1,5 @@
+SourcePaths: src
+Modules: mq31_bootmanager
+CFlags: -Iinclude -Iobj/roundrock_rev2_lagavulin/nessus_release -Iobj/roundrock_rev2_lagavulin/loader_roundrock_rev2_lagavulin -Iconfig/roundrock_rev2_lagavulin -I. -Iiarmaxq220i/include -Iiarmaxq220i/include/clib
+Libraries:
+Scatter: scatter/lagavulin_lnkmq31.xcl

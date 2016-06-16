@@ -1,0 +1,8 @@
+// Hardware definitions for the Cool River form factor platform
+
+#define PROCESSOR_FAMILY_MAXQ               1
+#define PROCESSOR_MQ31                      1
+#define PLATFORM_RIMCOOLRIVER               1
+#define ROCKET_LOADER                       1
+#define DEVID_UPDATER_SUPPORT               1
+#define SCATTER lagavulin_lnkmq31.xcl

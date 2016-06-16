@@ -1,0 +1,1111 @@
+******************************************************************************
+                  MSP430 Linker PC v3.2.1                      
+******************************************************************************
+>> Linked Thu Jul 14 13:41:41 2011
+
+OUTPUT FILE NAME:   <obj/boldr016u768_rev1/rocket.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 0000b3b6
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  PERIPHERALS           00000000   00001000  00000000  00001000  RWIX
+  BSL                   00001000   00000800  00000000  00000800  RWIX
+  INFO                  00001800   00000200  00000004  000001fc  RWIX
+  RAM_PRESERVED         00001c00   00000200  0000011a  000000e6  RW  
+  RAM                   00001e00   00000dc0  000006ed  000006d3  RW  
+  RAMVECTORS            00002bc0   00000040  00000026  0000001a  RW  
+  BOOT_FLASH            00008000   00007800  00005054  000027ac  RWIX
+  LOADER_FLASH          0000f800   000007c0  00000000  000007c0  RWIX
+  LOADER_VECTORS        0000ffc0   0000003e  00000000  0000003e  R   
+  LOADER_RESET          0000fffe   00000002  00000000  00000002  RWIX
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.info_sec 
+*          0    00001800    00000004     UNINITIALIZED
+                  00001800    00000004     metrics.o (.loader_msg)
+
+.preserved 
+*          0    00001c00    0000011a     UNINITIALIZED
+                  00001c00    00000106     eventlog.o (.preserved)
+                  00001d06    00000012     rocket_utc.o (.preserved)
+                  00001d18    00000002     rocket_misc.o (.preserved)
+
+.bss       0    00001e00    0000066d     UNINITIALIZED
+                  00001e00    000001a4     led.o (.bss)
+                  00001fa4    0000010c     eventlog.o (.bss)
+                  000020b0    000000c2     timer_mux.o (.bss)
+                  00002172    00000088     rocket_api.o (.bss)
+                  000021fa    0000007f     adc.o (.bss)
+                  00002279    00000001     gpio_relay.o (.bss)
+                  0000227a    00000050     rocket_updater.o (.bss)
+                  000022ca    00000048     rocket_i2c_relay.o (.bss)
+                  00002312    00000046     msgque.o (.bss)
+                  00002358    00000046     rocket_i2c.o (.bss)
+                  0000239e    00000042     rocket_pmic_intctrl.o (.bss)
+                  000023e0    00000026     rocket_intvector.o (.bss)
+                  00002406    00000022     rocket_gpio.o (.bss)
+                  00002428    00000012     rocket_adc_hw.o (.bss)
+                  0000243a    0000000a     hostctrl_common.o (.bss)
+                  00002444    0000000a     hostctrl_pwri2c.o (.bss)
+                  0000244e    00000006     hostctrl_paslump.o (.bss)
+                  00002454    00000006     rocket_led_hw.o (.bss)
+                  0000245a    00000004     rocket_timer.o (.bss)
+                  0000245e    00000004     rts430.lib : _lock.obj (.bss)
+                  00002462    00000004                : boot.obj (.bss)
+                  00002466    00000002     hostctrl_tavormg.o (.bss)
+                  00002468    00000002     rocket_misc.o (.bss)
+                  0000246a    00000002     rocket_slowclock.o (.bss)
+                  0000246c    00000001     hostctrl_pwr.o (.bss)
+
+.stack     0    00002b40    00000080     UNINITIALIZED
+                  00002b40    00000002     rts430.lib : boot.obj (.stack)
+                  00002b42    0000007e     --HOLE--
+
+.ramvectors 
+*          0    00002bda    00000026     UNINITIALIZED
+                  00002bda    00000026     rocket_intvector.o (.ramvectors)
+
+.text_boot 
+*          0    00008000    000035b2     
+                  00008000    00000010     metrics.o (.boot_info)
+                  00008010    00000098     init.o (.text:main)
+                  000080a8    00000016     init.o (.text:_system_pre_init)
+                  000080be    0000000c     init.o (.text:SwitchToXtal)
+                  000080ca    000000f0     rocket_gpio.o (.text:GpioInit)
+                  000081ba    000000c4     rocket_gpio.o (.text:PadConfig)
+                  0000827e    000000ba     rocket_gpio.o (.text:ConfigureI2cPortMapping)
+                  00008338    00000088     rocket_gpio.o (.text:PadSupercapMode)
+                  000083c0    0000002e     rocket_gpio.o (.text:PadRead)
+                  000083ee    00000026     rocket_gpio.o (.text:PadRegisterIntHandler)
+                  00008414    00000024     rocket_gpio.o (.text:Port1IntHandler)
+                  00008438    00000024     rocket_gpio.o (.text:Port2IntHandler)
+                  0000845c    00000018     rocket_gpio.o (.text:getPadBase)
+                  00008474    00000002     rocket_gpio.o (.text:GpioInterruptFailure)
+                  00008476    000000b2     rocket_misc.o (.text:UserNMIFaultIsr)
+                  00008528    000000a8     rocket_misc.o (.text:WdtInit)
+                  000085d0    0000009c     rocket_misc.o (.text:UpdateResetStat)
+                  0000866c    0000003a     rocket_misc.o (.text:ConfigureRstNmi)
+                  000086a6    0000002c     rocket_misc.o (.text:RimInitiateReset)
+                  000086d2    00000024     rocket_misc.o (.text:WdtHit)
+                  000086f6    00000020     rocket_misc.o (.text:WdtIsr)
+                  00008716    0000001e     rocket_misc.o (.text:SysNMIFaultIsr)
+                  00008734    00000016     rocket_misc.o (.text:WdtStartTimer)
+                  0000874a    00000006     rocket_misc.o (.text:GetResetReason)
+                  00008750    0000002e     rocket_timer.o (.text:SetHWTimer)
+                  0000877e    0000002a     rocket_timer.o (.text:GetHWTimerCountDword)
+                  000087a8    00000024     rocket_timer.o (.text:TimerHWInit)
+                  000087cc    0000001c     rocket_timer.o (.text:TimerA1Handler)
+                  000087e8    00000014     rocket_timer.o (.text:StopHWTimer)
+                  000087fc    00000014     rocket_timer.o (.text:TimerA0Handler)
+                  00008810    0000000c     rocket_timer.o (.text:GetHWTimerCountWord)
+                  0000881c    0000000c     rocket_timer.o (.text:TimerHWHalt)
+                  00008828    0000000a     rocket_timer.o (.text:RegisterHWTimerExpiry)
+                  00008832    00000156     rocket_api.o (.text:RocketRegRead)
+                  00008988    000000d6     rocket_api.o (.text:RocketRegWrite)
+                  00008a5e    00000060     rocket_api.o (.text:ApiInit)
+                  00008abe    00000030     rocket_api.o (.text:ApiAutoIncrementOverried)
+                  00008aee    0000002a     rocket_api.o (.text:ApiRegRead)
+                  00008b18    00000028     rocket_api.o (.text:ApiRegisterHandlers)
+                  00008b40    00000024     rocket_api.o (.text:ApiInterruptHost)
+                  00008b64    00000024     rocket_api.o (.text:ApiRegWrite)
+                  00008b88    00000024     rocket_api.o (.text:RocketPmicStopReceived)
+                  00008bac    00000024     rocket_api.o (.text:RocketRegStopReceived)
+                  00008bd0    0000001e     rocket_api.o (.text:ApiStartReceived)
+                  00008bee    0000001e     rocket_api.o (.text:ApiStopReceived)
+                  00008c0c    0000001e     rocket_api.o (.text:ApiUnregisterHandlers)
+                  00008c2a    0000001a     rocket_api.o (.text:UpdateInterruptHost)
+                  00008c44    00000018     rocket_api.o (.text:RocketPmicWrite)
+                  00008c5c    00000016     rocket_api.o (.text:ApiClearInterruptHost)
+                  00008c72    00000016     rocket_api.o (.text:RocketPmicRead)
+                  00008c88    0000012c     timer_mux.o (.text:unSetTimer)
+                  00008db4    000000ea     timer_mux.o (.text:SetTimer)
+                  00008e9e    00000096     timer_mux.o (.text:expireMuxTimers)
+                  00008f34    00000080     timer_mux.o (.text:StopTimer)
+                  00008fb4    0000002c     timer_mux.o (.text:TimerInit)
+                  00008fe0    0000001a     timer_mux.o (.text:RegisterTimerExpiry)
+                  00008ffa    00000018     timer_mux.o (.text:setEarliest)
+                  00009012    00000002     timer_mux.o (.text:TimerCallbackFailure)
+                  00009014    00000474     rocket_i2c.o (.text:i2cIsrHandler)
+                  00009488    000000ba     rocket_i2c.o (.text:I2cWriteRead)
+                  00009542    0000009c     rocket_i2c.o (.text:I2cWrite)
+                  000095de    00000096     rocket_i2c.o (.text:usciInitI2c)
+                  00009674    00000088     rocket_i2c.o (.text:UsciForceClockStretch)
+                  000096fc    0000007c     rocket_i2c.o (.text:i2cDoStart)
+                  00009778    00000032     rocket_i2c.o (.text:I2cInit)
+                  000097aa    0000002e     rocket_i2c.o (.text:I2cInitInternalBus)
+                  000097d8    0000002a     rocket_i2c.o (.text:I2cRegisterExtCb)
+                  00009802    00000012     rocket_i2c.o (.text:I2cUninit)
+                  00009814    00000010     rocket_i2c.o (.text:InternalUsciReset)
+                  00009824    0000000e     rocket_i2c.o (.text:usciB0RxTxIsr)
+                  00009832    0000000e     rocket_i2c.o (.text:usciB1RxTxIsr)
+                  00009840    0000000e     rocket_i2c.o (.text:usciB2RxTxIsr)
+                  0000984e    00000008     rocket_i2c.o (.text:i2cMasterSpeedBoost)
+                  00009856    00000006     rocket_i2c.o (.const:i2cBusMapping)
+                  0000985c    00000068     rocket_slowclock.o (.text:SetVCoreLevel)
+                  000098c4    0000005a     rocket_slowclock.o (.text:ConfigureFll)
+                  0000991e    00000042     rocket_slowclock.o (.text:PreEnterDeepSleep)
+                  00009960    00000030     rocket_slowclock.o (.text:ConfigureXt1External)
+                  00009990    00000026     rocket_slowclock.o (.text:SCSleep)
+                  000099b6    0000000a     rocket_slowclock.o (.text:VCoreLevel)
+                  000099c0    00000076     eventlog.o (.text:EventLogAdd)
+                  00009a36    0000004e     eventlog.o (.text:EventLogInit)
+                  00009a84    0000002a     eventlog.o (.text:EventLogCapture)
+                  00009aae    00000028     eventlog.o (.text:EventLogAddN)
+                  00009ad6    00000026     eventlog.o (.text:SavedEventLogRead)
+                  00009afc    00000022     eventlog.o (.text:SavedEventLogRewind)
+                  00009b1e    0000000e     eventlog.o (.text:SavedEventLogExists)
+                  00009b2c    00000080     msgque.o (.text:QueueCallInt)
+                  00009bac    00000052     msgque.o (.text:ExecuteCall)
+                  00009bfe    0000000e     msgque.o (.text:CallQueueInit)
+                  00009c0c    00000006     msgque.o (.text:GetQueueCount)
+                  00009c12    00000064     rocket_spi.o (.text:SpiInit)
+                  00009c76    0000005a     rocket_spi.o (.text:PmicRead)
+                  00009cd0    0000004a     rocket_spi.o (.text:PmicWrite)
+                  00009d1a    00000008     rocket_spi.o (.text:UsciA0RxTxIsr)
+                  00009d22    00000008     rocket_spi.o (.text:UsciA1RxTxIsr)
+                  00009d2a    00000008     rocket_spi.o (.text:UsciA2RxTxIsr)
+                  00009d32    00000002     rocket_spi.o (.const:spiBusMapping)
+                  00009d34    0000005a     rocket_intvector.o (.text:RegisterIntHandler)
+                  00009d8e    0000001e     rocket_intvector.o (.text:unregisteredHandler)
+                  00009dac    0000001a     rocket_intvector.o (.text:InterruptControllerInit)
+                  00009dc6    00000012     rocket_intvector.o (.text:RegisterIntHandlerReal)
+                  00009dd8    0000007e     rocket_adc_hw.o (.text:AdcConvertHw)
+                  00009e56    0000007a     rocket_adc_hw.o (.text:AdcInitHw)
+                  00009ed0    00000060     rocket_adc_hw.o (.text:AdcRawCb)
+                  00009f30    00000036     rocket_adc_hw.o (.text:AdcCompleteIsrHw)
+                  00009f66    00000030     rocket_adc_hw.o (.text:AdcRawRegRead)
+                  00009f96    0000002a     rocket_adc_hw.o (.text:AdcRawConvert)
+                  00009fc0    0000001a     rocket_adc_hw.o (.text:AdcRawConvertVsys)
+                  00009fda    00000016     rocket_adc_hw.o (.text:AdcRawRegWrite)
+                  00009ff0    00000014     rocket_adc_hw.o (.text:AdcRawStopReceived)
+                  0000a004    0000000c     rocket_adc_hw.o (.text:AdcHalt)
+                  0000a010    000002ae     rocket_updater.o (.text:ProcessUpdateCommand)
+                  0000a2be    00000062     rocket_updater.o (.text:UpdaterRegWrite)
+                  0000a320    00000056     rocket_updater.o (.text:CodeUpdateStateInit)
+                  0000a376    00000054     rocket_updater.o (.text:IsImageValid)
+                  0000a3ca    0000002a     rocket_updater.o (.text:UpdaterStopReceived)
+                  0000a3f4    0000001c     rocket_updater.o (.text:UpdaterRegRead)
+                  0000a410    00000014     rocket_updater.o (.text:UpdaterStartReceived)
+                  0000a424    0000014a     hostctrl_common.o (.text:SupplySequenceRunInternal)
+                  0000a56e    000000e2     hostctrl_common.o (.text:HostCtrlPmicRegisterReset)
+                  0000a650    000000a6     hostctrl_common.o (.text:HostCtrlInitiateReset)
+                  0000a6f6    00000086     hostctrl_common.o (.text:HostCtrlGpioReset)
+                  0000a77c    00000042     hostctrl_common.o (.text:HostCtrlDisableSupplies)
+                  0000a7be    00000036     hostctrl_common.o (.const:SSEQ)
+                  0000a7f4    00000030     hostctrl_common.o (.text:HostCtrlInit)
+                  0000a824    00000015     hostctrl_common.o (.const:SLR_DFLT)
+                  0000a839    00000001     --HOLE-- [fill = 0]
+                  0000a83a    00000012     hostctrl_common.o (.text:HostCtrlPowerLost)
+                  0000a84c    00000008     hostctrl_common.o (.text:SupplySequenceRun)
+                  0000a854    00000006     hostctrl_common.o (.text:HostCtrlGetResetFlags)
+                  0000a85a    00000006     hostctrl_common.o (.text:HostCtrlGetResetReason)
+                  0000a860    00000001     hostctrl_common.o (.const)
+                  0000a861    00000001     --HOLE-- [fill = 0]
+                  0000a862    00000262     hostctrl_tavormg.o (.text:HostCtrlTimerExpiry)
+                  0000aac4    000000a8     hostctrl_tavormg.o (.text:PmicFaultHandler)
+                  0000ab6c    00000044     hostctrl_tavormg.o (.text:SysEnIsr)
+                  0000abb0    0000003e     hostctrl_tavormg.o (.text:HostCtrlGpioResetProc)
+                  0000abee    00000022     hostctrl_tavormg.o (.text:ExternalPwrApplied)
+                  0000ac10    00000022     hostctrl_tavormg.o (.text:HostCtrlInitProc)
+                  0000ac32    00000016     hostctrl_tavormg.o (.text:HostCtrlPrepResetProc)
+                  0000ac48    0000000c     hostctrl_tavormg.o (.text:HostCtrlTimerHandler)
+                  0000ac54    00000006     hostctrl_tavormg.o (.text:HostCtrlUpdateState)
+                  0000ac5a    000000b8     msp430_flash.o (.text:FlashWriteBuffer)
+                  0000ad12    00000062     msp430_flash.o (.text:FlashWrite)
+                  0000ad74    00000036     msp430_flash.o (.text:FlashEraseSegment)
+                  0000adaa    00000126     rocket_pmic_intctrl.o (.text:PmicInterruptHandlerReal)
+                  0000aed0    000000b0     rocket_pmic_intctrl.o (.text:PmicIntCtrlInit)
+                  0000af80    0000009c     rocket_pmic_intctrl.o (.const:PmicInterruptMaskMap)
+                  0000b01c    00000070     rocket_pmic_intctrl.o (.text:IntIsEnabled)
+                  0000b08c    0000006a     rocket_pmic_intctrl.o (.text:PmicIntctrlRegRead)
+                  0000b0f6    00000030     rocket_pmic_intctrl.o (.text:PmicRegisterIntHandler)
+                  0000b126    0000002e     rocket_pmic_intctrl.o (.text:PmicInterruptEnable)
+                  0000b154    00000028     rocket_pmic_intctrl.o (.text:PmicIntCtrlHostUninit)
+                  0000b17c    00000028     rocket_pmic_intctrl.o (.text:PmicInterruptDisable)
+                  0000b1a4    0000001a     rocket_pmic_intctrl.o (.text:PmicUpdateIntMaskRegisters)
+                  0000b1be    00000018     rocket_pmic_intctrl.o (.text:PmicIntctrlRegWrite)
+                  0000b1d6    00000018     rocket_pmic_intctrl.o (.text:PmicUpdateIntMaskRegisterReal)
+                  0000b1ee    00000016     rocket_crc.o (.text:GenerateCrc16)
+                  0000b204    0000006e     rts430.lib : lsr32.obj (.text)
+                  0000b272    00000058                : div32u.obj (.text)
+                  0000b2ca    0000004e                : lsl32.obj (.text)
+                  0000b318    00000046                : autoinit.obj (.text:_auto_init)
+                  0000b35e    0000002c                : asr16.obj (.text)
+                  0000b38a    0000002c                : lsl16.obj (.text)
+                  0000b3b6    00000026                : boot.obj (.text:_c_int00_noexit)
+                  0000b3dc    00000026                : mult32.obj (.text)
+                  0000b402    00000016                : div16u.obj (.text)
+                  0000b418    00000014                : memset.obj (.text:memset)
+                  0000b42c    00000014                : mult16.obj (.text)
+                  0000b440    00000012                : memcpy.obj (.text:memcpy)
+                  0000b452    00000010                : epilog.obj (.text)
+                  0000b462    00000004                : exit.obj (.text:abort)
+                  0000b466    00000002                : boot.obj (.reset)
+                  0000b468    00000002                : _lock.obj (.text:_nop)
+                  0000b46a    000000b4     msp430_inout.o (.text)
+                  0000b51e    00000034     pmic_max8649.o (.text:Max8649Init)
+                  0000b552    00000022     pmic_max8649.o (.text:Max8649Write)
+                  0000b574    0000003e     metrics.o (.const)
+
+.cinit     0    0000b5b2    000000a2     
+                  0000b5b2    0000001e     rocket_updater.o (.cinit)
+                  0000b5d0    00000012     hostctrl_common.o (.cinit)
+                  0000b5e2    00000012     led.o (.cinit)
+                  0000b5f4    0000000c     rocket_adc_hw.o (.cinit)
+                  0000b600    0000000c     rocket_timer.o (.cinit)
+                  0000b60c    0000000b     adc.o (.cinit)
+                  0000b617    00000001     --HOLE-- [fill = 0]
+                  0000b618    0000000b     rocket_misc.o (.cinit)
+                  0000b623    00000001     --HOLE-- [fill = 0]
+                  0000b624    00000006     hostctrl_paslump.o (.cinit)
+                  0000b62a    00000006     hostctrl_pwri2c.o (.cinit)
+                  0000b630    00000006     rocket_gpio.o (.cinit)
+                  0000b636    00000006     rocket_i2c.o (.cinit)
+                  0000b63c    00000006     rocket_slowclock.o (.cinit)
+                  0000b642    00000006     timer_mux.o (.cinit)
+                  0000b648    00000005     rocket_pmic_intctrl.o (.cinit)
+                  0000b64d    00000003     --HOLE-- [fill = 0]
+                  0000b650    00000004     (.pad.cinit) [fill = 0]
+
+.text_app 
+*          0    0000de00    00001a00     
+                  0000de00    00000010     metrics.o (.app_info)
+                  0000de10    000002fc     led.o (.text:LedTransitionEvent)
+                  0000e10c    000002a4     adc.o (.text:adcSm)
+                  0000e3b0    000001d8     led.o (.text:UpdateTransitionInfo)
+                  0000e588    000000d4     rocket_utc.o (.text:UtcGetTimeInternal)
+                  0000e65c    000000d4     adc.o (.text:adcRegRead)
+                  0000e730    000000d0     hostctrl_pwr.o (.text:KeyVolToggle)
+                  0000e800    000000ca     adc.o (.text:adcRegWrite)
+                  0000e8ca    000000c6     led.o (.text:LedInit)
+                  0000e990    000000b6     adc.o (.text:adcSetState)
+                  0000ea46    00000086     rocket_i2c_relay.o (.text:i2cCmdProcess)
+                  0000eacc    00000074     adc.o (.text:AdcInit)
+                  0000eb40    00000070     rocket_led_hw.o (.text:SetLedColourHw)
+                  0000ebb0    00000068     rocket_utc.o (.text:UtcInit)
+                  0000ec18    00000062     rocket_i2c_relay.o (.text:i2cSlavePwrIsr)
+                  0000ec7a    00000058     hostctrl_pwr.o (.text:PwrSupplyToggle)
+                  0000ecd2    00000052     adc.o (.text:adcStartConversion)
+                  0000ed24    00000052     adc.o (.text:updateAdcInterrupts)
+                  0000ed76    00000050     rocket_i2c_relay.o (.text:i2cRlyRegRead)
+                  0000edc6    0000004e     hostctrl_paslump.o (.text:PaSlumpRegRead)
+                  0000ee14    0000004c     hostctrl_pwr.o (.text:PwrSupplyDisable)
+                  0000ee60    00000046     hostctrl_pwr.o (.text:KeyVolumeResetEnable)
+                  0000eea6    00000046     hostctrl_pwr.o (.text:PwrSupplyEnable)
+                  0000eeec    00000044     gpio_relay.o (.text:PadGetState)
+                  0000ef30    00000044     rocket_utc.o (.text:UtcSetTime)
+                  0000ef74    00000042     hostctrl_pwr.o (.text:PwrSupplyToggleRegister)
+                  0000efb6    00000040     adc.o (.text:AdcInhibitChange)
+                  0000eff6    00000040     led.o (.text:LedRegWrite)
+                  0000f036    00000040     hostctrl_pwri2c.o (.text:Max8649SetHugeVoltage)
+                  0000f076    0000003a     adc.o (.text:AdcUninit)
+                  0000f0b0    0000003a     gpio_relay.o (.text:gpioRegWrite)
+                  0000f0ea    0000003a     rocket_i2c_relay.o (.text:i2cRlyRegWrite)
+                  0000f124    00000038     rocket_i2c_relay.o (.text:I2cRlyInit)
+                  0000f15c    00000038     hostctrl_paslump.o (.text:PaSlumpRegWrite)
+                  0000f194    00000034     hostctrl_paslump.o (.text:HostCtrlPaSlumpInit)
+                  0000f1c8    00000034     rocket_utc.o (.text:RtcGetCounter)
+                  0000f1fc    00000032     hostctrl_paslump.o (.text:PaSlumpEnable)
+                  0000f22e    00000030     hostctrl_pwr.o (.text:HostCtrlPwrInit)
+                  0000f25e    00000030     led.o (.text:SetLedColourPattern)
+                  0000f28e    00000030     adc.o (.text:adcSched)
+                  0000f2be    0000002e     adc.o (.text:adcStopReceived)
+                  0000f2ec    0000002c     app_init.o (.text:AppEntrypoint)
+                  0000f318    00000028     gpio_relay.o (.text:GpioRelayInit)
+                  0000f340    00000024     hostctrl_pwri2c.o (.text:PwrI2cRegRead)
+                  0000f364    00000024     hostctrl_pwri2c.o (.text:PwrI2cRegWrite)
+                  0000f388    00000020     rocket_fuelgauge.o (.text:FGInit)
+                  0000f3a8    00000020     hostctrl_pwri2c.o (.text:HostCtrlPwrI2cInit)
+                  0000f3c8    00000020     adc.o (.text:adcCompleteCb)
+                  0000f3e8    0000001e     adc.o (.text:PaSlumpConfigAdcEngine)
+                  0000f406    0000001e     hostctrl_paslump.o (.text:PaSlumpConversionComplete)
+                  0000f424    0000001e     adc.o (.text:PaSlumpStopConversion)
+                  0000f442    0000001c     app_init.o (.text:AppExitpoint)
+                  0000f45e    0000001c     hostctrl_pwr.o (.text:HostCtrlPwrUninit)
+                  0000f47a    0000001c     gpio_relay.o (.text:gpioRegRead)
+                  0000f496    0000001c     rocket_i2c_relay.o (.text:i2cRlyReceivedStop)
+                  0000f4b2    0000001a     hostctrl_pwri2c.o (.text:Max8649UseTransition)
+                  0000f4cc    0000001a     rocket_utc.o (.text:UtcDisable)
+                  0000f4e6    00000018     led.o (.text:LedStopReceived)
+                  0000f4fe    00000016     rocket_utc.o (.text:UtcTimerExpiry)
+                  0000f514    00000016     adc.o (.text:adcInhibitGetSource)
+                  0000f52a    00000012     rocket_utc.o (.text:UtcBackup)
+                  0000f53c    00000010     rocket_i2c_relay.o (.text:I2cRlyUninit)
+                  0000f54c    00000010     adc.o (.text:PaSlumpStartConversion)
+                  0000f55c    0000000e     hostctrl_paslump.o (.text:HostCtrlPaSlumpUninit)
+                  0000f56a    0000000e     rocket_led_hw.o (.text:LedInitHw)
+                  0000f578    0000000e     led.o (.text:LedRegRead)
+                  0000f586    0000000e     hostctrl_paslump.o (.text:PaSlumpTriggerReading)
+                  0000f594    0000000c     hostctrl_pwr.o (.text:IsKeyVolumeResetEnabled)
+                  0000f5a0    0000000c     led.o (.text:StopLedColourPattern)
+                  0000f5ac    0000000c     rocket_utc.o (.text:UtcIsDisabled)
+                  0000f5b8    0000000c     adc.o (.text:adcTimerCb)
+                  0000f5c4    0000000a     rocket_led_hw.o (.text:GetLedColourHw)
+                  0000f5ce    00000008     gpio_relay.o (.text:GpioRelayUninit)
+                  0000f5d6    00000008     hostctrl_pwri2c.o (.text:HostCtrlPwrI2cUninit)
+                  0000f5de    00000008     rocket_utc.o (.text:RtcHandler)
+                  0000f5e6    00000006     hostctrl_pwr.o (.const:SUPPLY_CTRL)
+                  0000f5ec    00000006     hostctrl_pwr.o (.text:EcoModeEnHandler)
+                  0000f5f2    00000006     hostctrl_pwr.o (.text:GpsTcxoEnHandler)
+                  0000f5f8    00000006     hostctrl_pwr.o (.text:KeyVolHandler)
+                  0000f5fe    00000006     led.o (.text:LedStartReceived)
+                  0000f604    00000006     led.o (.text:LedTransitionEventCb)
+                  0000f60a    00000006     hostctrl_pwri2c.o (.text:Max8649UpdTransitionVoltage)
+                  0000f610    00000006     rocket_utc.o (.text:UtcGetTime)
+                  0000f616    00000002     rocket_fuelgauge.o (.text:FGUninit)
+                  0000f618    000001e8     --HOLE-- [fill = 0]
+
+.loader_sec 
+*          0    0000f800    00000000     UNINITIALIZED
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address    name
+--------   ----
+00001e00   .bss
+00009f30   AdcCompleteIsrHw
+00009dd8   AdcConvertHw
+0000a004   AdcHalt
+0000efb6   AdcInhibitChange
+0000eacc   AdcInit
+00009e56   AdcInitHw
+00009fc0   AdcRawConvertVsys
+00009f66   AdcRawRegRead
+00009fda   AdcRawRegWrite
+00009ff0   AdcRawStopReceived
+0000f076   AdcUninit
+0000246a   AllowDeepSleep
+00008abe   ApiAutoIncrementOverried
+00008c5c   ApiClearInterruptHost
+00008a5e   ApiInit
+00008b40   ApiInterruptHost
+00008aee   ApiRegRead
+00008b64   ApiRegWrite
+00008b18   ApiRegisterHandlers
+00008bd0   ApiStartReceived
+00008bee   ApiStopReceived
+00008c0c   ApiUnregisterHandlers
+000022c8   AppCallsAllowed
+0000f2ec   AppEntrypoint
+0000f442   AppExitpoint
+0000de00   AppImageInfo
+00001f86   BlueSlope
+00008000   BootImageInfo
+00001800   BootloaderMsg
+0000b462   C$$EXIT
+00009bfe   CallQueueInit
+0000227c   Cmd
+0000227a   CmdIndex
+0000a320   CodeUpdateStateInit
+000098c4   ConfigureFll
+0000827e   ConfigureI2cPortMapping
+0000866c   ConfigureRstNmi
+00009960   ConfigureXt1External
+00002428   ConvCompleteCallback
+00001c00   CurrentEventLog
+0000f5ec   EcoModeEnHandler
+000099c0   EventLogAdd
+00009aae   EventLogAddN
+00009a84   EventLogCapture
+00009a36   EventLogInit
+00009bac   ExecuteCall
+0000f388   FGInit
+0000f616   FGUninit
+0000ad74   FlashEraseSegment
+0000ad12   FlashWrite
+0000ac5a   FlashWriteBuffer
+0000b1ee   GenerateCrc16
+0000877e   GetHWTimerCountDword
+00008810   GetHWTimerCountWord
+0000f5c4   GetLedColourHw
+00009c0c   GetQueueCount
+0000874a   GetResetReason
+000080ca   GpioInit
+0000f318   GpioRelayInit
+0000f5ce   GpioRelayUninit
+0000f5f2   GpsTcxoEnHandler
+00001f84   GreenSlope
+0000a77c   HostCtrlDisableSupplies
+0000a854   HostCtrlGetResetFlags
+0000a85a   HostCtrlGetResetReason
+0000a6f6   HostCtrlGpioReset
+0000abb0   HostCtrlGpioResetProc
+0000a7f4   HostCtrlInit
+0000ac10   HostCtrlInitProc
+0000a650   HostCtrlInitiateReset
+0000f194   HostCtrlPaSlumpInit
+0000f55c   HostCtrlPaSlumpUninit
+0000a56e   HostCtrlPmicRegisterReset
+0000a83a   HostCtrlPowerLost
+0000ac32   HostCtrlPrepResetProc
+0000f3a8   HostCtrlPwrI2cInit
+0000f5d6   HostCtrlPwrI2cUninit
+0000f22e   HostCtrlPwrInit
+0000f45e   HostCtrlPwrUninit
+0000a862   HostCtrlTimerExpiry
+0000ac48   HostCtrlTimerHandler
+0000ac54   HostCtrlUpdateState
+00009778   I2cInit
+000097aa   I2cInitInternalBus
+000097d8   I2cRegisterExtCb
+0000f124   I2cRlyInit
+0000f53c   I2cRlyUninit
+00009802   I2cUninit
+00009542   I2cWrite
+00009488   I2cWriteRead
+0000b35e   I_ASR
+0000b386   I_ASR_1
+0000b374   I_ASR_10
+0000b372   I_ASR_11
+0000b370   I_ASR_12
+0000b36e   I_ASR_13
+0000b36c   I_ASR_14
+0000b36a   I_ASR_15
+0000b384   I_ASR_2
+0000b382   I_ASR_3
+0000b380   I_ASR_4
+0000b37e   I_ASR_5
+0000b37c   I_ASR_6
+0000b37a   I_ASR_7
+0000b378   I_ASR_8
+0000b376   I_ASR_9
+0000b38a   I_LSL
+0000b3b2   I_LSL_1
+0000b3a0   I_LSL_10
+0000b39e   I_LSL_11
+0000b39c   I_LSL_12
+0000b39a   I_LSL_13
+0000b398   I_LSL_14
+0000b396   I_LSL_15
+0000b3b0   I_LSL_2
+0000b3ae   I_LSL_3
+0000b3ac   I_LSL_4
+0000b3aa   I_LSL_5
+0000b3a8   I_LSL_6
+0000b3a6   I_LSL_7
+0000b3a4   I_LSL_8
+0000b3a2   I_LSL_9
+000023de   IntctrlUpdateStat
+00009814   InternalUsciReset
+00009dac   InterruptControllerInit
+00002bda   InterruptHandler
+000023e0   InterruptHandlerActual
+0000a376   IsImageValid
+0000f594   IsKeyVolumeResetEnabled
+0000b46a   IsrVect0
+0000b470   IsrVect1
+0000b4b2   IsrVect10
+0000b4ba   IsrVect11
+0000b4c2   IsrVect12
+0000b4ca   IsrVect13
+0000b4d2   IsrVect14
+0000b4da   IsrVect15
+0000b4e2   IsrVect16
+0000b4ea   IsrVect17
+0000b4f2   IsrVect18
+0000b476   IsrVect2
+0000b482   IsrVect3
+0000b47c   IsrVect4
+0000b48a   IsrVect5
+0000b492   IsrVect6
+0000b49a   IsrVect7
+0000b4a2   IsrVect8
+0000b4aa   IsrVect9
+0000f5f8   KeyVolHandler
+0000e730   KeyVolToggle
+0000ee60   KeyVolumeResetEnable
+0000b2ca   L_LSL
+0000b312   L_LSL_1
+0000b2ee   L_LSL_10
+0000b2ea   L_LSL_11
+0000b2e6   L_LSL_12
+0000b2e2   L_LSL_13
+0000b2de   L_LSL_14
+0000b2da   L_LSL_15
+0000b30e   L_LSL_2
+0000b30a   L_LSL_3
+0000b306   L_LSL_4
+0000b302   L_LSL_5
+0000b2fe   L_LSL_6
+0000b2fa   L_LSL_7
+0000b2f6   L_LSL_8
+0000b2f2   L_LSL_9
+0000b204   L_LSR
+0000b26a   L_LSR_1
+0000b234   L_LSR_10
+0000b22e   L_LSR_11
+0000b228   L_LSR_12
+0000b222   L_LSR_13
+0000b21c   L_LSR_14
+0000b216   L_LSR_15
+0000b264   L_LSR_2
+0000b25e   L_LSR_3
+0000b258   L_LSR_4
+0000b252   L_LSR_5
+0000b24c   L_LSR_6
+0000b246   L_LSR_7
+0000b240   L_LSR_8
+0000b23a   L_LSR_9
+0000e8ca   LedInit
+0000f56a   LedInitHw
+0000f578   LedRegRead
+0000eff6   LedRegWrite
+00001f92   LedRxIndex
+0000f5fe   LedStartReceived
+0000f4e6   LedStopReceived
+0000de10   LedTransitionEvent
+0000f604   LedTransitionEventCb
+0000b51e   Max8649Init
+0000f036   Max8649SetHugeVoltage
+0000f60a   Max8649UpdTransitionVoltage
+0000f4b2   Max8649UseTransition
+0000b552   Max8649Write
+0000242c   MuxEnabled
+00001f8c   NumTransitions
+0000f3e8   PaSlumpConfigAdcEngine
+0000f406   PaSlumpConversionComplete
+0000f54c   PaSlumpStartConversion
+0000f424   PaSlumpStopConversion
+000081ba   PadConfig
+0000eeec   PadGetState
+000083c0   PadRead
+000083ee   PadRegisterIntHandler
+00008338   PadSupercapMode
+00001f90   PatternSize
+0000b154   PmicIntCtrlHostUninit
+0000aed0   PmicIntCtrlInit
+0000b08c   PmicIntctrlRegRead
+0000b1be   PmicIntctrlRegWrite
+0000b17c   PmicInterruptDisable
+0000b126   PmicInterruptEnable
+00009c76   PmicRead
+0000b0f6   PmicRegisterIntHandler
+0000b1a4   PmicUpdateIntMaskRegisters
+00009cd0   PmicWrite
+00008414   Port1IntHandler
+00008438   Port2IntHandler
+0000991e   PreEnterDeepSleep
+0000f340   PwrI2cRegRead
+0000f364   PwrI2cRegWrite
+0000ee14   PwrSupplyDisable
+0000eea6   PwrSupplyEnable
+0000ec7a   PwrSupplyToggle
+0000ef74   PwrSupplyToggleRegister
+00009b2c   QueueCallInt
+00001f82   RedSlope
+00008828   RegisterHWTimerExpiry
+00009d34   RegisterIntHandler
+00009dc6   RegisterIntHandlerReal
+00008fe0   RegisterTimerExpiry
+00001d18   ResetCookie
+00002469   ResetExtra
+00002468   ResetStat
+000086a6   RimInitiateReset
+0000b574   RocketMetrics
+00008c72   RocketPmicRead
+00008b88   RocketPmicStopReceived
+00008c44   RocketPmicWrite
+00008832   RocketRegRead
+00008bac   RocketRegStopReceived
+00008988   RocketRegWrite
+0000f5de   RtcHandler
+00009990   SCSleep
+0000242a   SampleResult
+00001fa4   SavedEventLog
+000020aa   SavedEventLogByteIndex
+00009b1e   SavedEventLogExists
+00009ad6   SavedEventLogRead
+000020ae   SavedEventLogReadCount
+00009afc   SavedEventLogRewind
+000020ac   SavedEventLogSize
+00008750   SetHWTimer
+0000eb40   SetLedColourHw
+0000f25e   SetLedColourPattern
+00008db4   SetTimer
+0000985c   SetVCoreLevel
+00009c12   SpiInit
+000087e8   StopHWTimer
+0000f5a0   StopLedColourPattern
+00008f34   StopTimer
+0000a84c   SupplySequenceRun
+000080be   SwitchToXtal
+0000ab6c   SysEnIsr
+000021e8   SysFlags0
+00008716   SysNMIFaultIsr
+000087fc   TimerA0Handler
+000087cc   TimerA1Handler
+0000881c   TimerHWHalt
+000087a8   TimerHWInit
+00008fb4   TimerInit
+00001f8e   TransitionCounter
+00001f88   TransitionTimeTicks
+000022c0   UpdateBytesWritten
+000022c6   UpdateCmdPending
+000022c2   UpdatePermission
+000085d0   UpdateResetStat
+000022c4   UpdateResponse
+000022be   UpdateSize
+0000e3b0   UpdateTransitionInfo
+0000a3f4   UpdaterRegRead
+0000a2be   UpdaterRegWrite
+0000a410   UpdaterStartReceived
+0000a3ca   UpdaterStopReceived
+00009d1a   UsciA0RxTxIsr
+00009d22   UsciA1RxTxIsr
+00009d2a   UsciA2RxTxIsr
+00009674   UsciForceClockStretch
+00008476   UserNMIFaultIsr
+0000f52a   UtcBackup
+0000f4cc   UtcDisable
+00001d06   UtcEnabled
+0000f610   UtcGetTime
+0000ebb0   UtcInit
+0000f5ac   UtcIsDisabled
+0000ef30   UtcSetTime
+000099b6   VCoreLevel
+0000b48a   Vect5Base
+000086d2   WdtHit
+00008528   WdtInit
+000086f6   WdtIsr
+00008734   WdtStartTimer
+00002bc0   __STACK_END
+00000080   __STACK_SIZE
+00000001   __TI_args_main
+00000001   __TI_auto_init
+00000001   __TI_exit
+ffffffff   __binit__
+00001e00   __bss__
+ffffffff   __c_args__
+0000b5b2   __cinit__
+0000b402   __divu
+0000b272   __divul
+0000246d   __end__
+0000b42c   __mpyi
+0000b3dc   __mpyl
+ffffffff   __pinit__
+0000b402   __remu
+0000b272   __remul
+0000b318   _auto_init
+0000b3b6   _c_int00
+0000b3b6   _c_int00_noexit
+00002462   _cleanup_ptr
+00002464   _dtors_ptr
+0000f800   _end_of_app_image
+0000b654   _end_of_boot_image
+0000f800   _end_of_boot_sec
+0000245e   _lock
+0000b468   _nop
+0000b466   _reset_vector
+00002b40   _stack
+0000de00   _start_of_app_image
+00008000   _start_of_boot_image
+00008000   _start_of_boot_sec
+000080a8   _system_pre_init
+00002460   _unlock
+0000b462   abort
+ffffffff   binit
+0000b5b2   cinit
+0000246d   end
+0000b45e   func_epilog_1
+0000b45c   func_epilog_2
+0000b45a   func_epilog_3
+0000b458   func_epilog_4
+0000b456   func_epilog_5
+0000b454   func_epilog_6
+0000b452   func_epilog_7
+0000845c   getPadBase
+00009856   i2cBusMapping
+00001e00   i2cLedArray
+00001e02   i2cLedPattern
+00001d14   lastRtcValue
+00008010   main
+0000b440   memcpy
+0000b418   memset
+ffffffff   pinit
+00002172   rReg
+00001d10   rtcHigh
+00009d32   spiBusMapping
+00001f94   statusLed
+00001d08   time
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address    name
+--------   ----
+00000001   __TI_args_main
+00000001   __TI_auto_init
+00000001   __TI_exit
+00000080   __STACK_SIZE
+00001800   BootloaderMsg
+00001c00   CurrentEventLog
+00001d06   UtcEnabled
+00001d08   time
+00001d10   rtcHigh
+00001d14   lastRtcValue
+00001d18   ResetCookie
+00001e00   .bss
+00001e00   __bss__
+00001e00   i2cLedArray
+00001e02   i2cLedPattern
+00001f82   RedSlope
+00001f84   GreenSlope
+00001f86   BlueSlope
+00001f88   TransitionTimeTicks
+00001f8c   NumTransitions
+00001f8e   TransitionCounter
+00001f90   PatternSize
+00001f92   LedRxIndex
+00001f94   statusLed
+00001fa4   SavedEventLog
+000020aa   SavedEventLogByteIndex
+000020ac   SavedEventLogSize
+000020ae   SavedEventLogReadCount
+00002172   rReg
+000021e8   SysFlags0
+0000227a   CmdIndex
+0000227c   Cmd
+000022be   UpdateSize
+000022c0   UpdateBytesWritten
+000022c2   UpdatePermission
+000022c4   UpdateResponse
+000022c6   UpdateCmdPending
+000022c8   AppCallsAllowed
+000023de   IntctrlUpdateStat
+000023e0   InterruptHandlerActual
+00002428   ConvCompleteCallback
+0000242a   SampleResult
+0000242c   MuxEnabled
+0000245e   _lock
+00002460   _unlock
+00002462   _cleanup_ptr
+00002464   _dtors_ptr
+00002468   ResetStat
+00002469   ResetExtra
+0000246a   AllowDeepSleep
+0000246d   __end__
+0000246d   end
+00002b40   _stack
+00002bc0   __STACK_END
+00002bda   InterruptHandler
+00008000   BootImageInfo
+00008000   _start_of_boot_image
+00008000   _start_of_boot_sec
+00008010   main
+000080a8   _system_pre_init
+000080be   SwitchToXtal
+000080ca   GpioInit
+000081ba   PadConfig
+0000827e   ConfigureI2cPortMapping
+00008338   PadSupercapMode
+000083c0   PadRead
+000083ee   PadRegisterIntHandler
+00008414   Port1IntHandler
+00008438   Port2IntHandler
+0000845c   getPadBase
+00008476   UserNMIFaultIsr
+00008528   WdtInit
+000085d0   UpdateResetStat
+0000866c   ConfigureRstNmi
+000086a6   RimInitiateReset
+000086d2   WdtHit
+000086f6   WdtIsr
+00008716   SysNMIFaultIsr
+00008734   WdtStartTimer
+0000874a   GetResetReason
+00008750   SetHWTimer
+0000877e   GetHWTimerCountDword
+000087a8   TimerHWInit
+000087cc   TimerA1Handler
+000087e8   StopHWTimer
+000087fc   TimerA0Handler
+00008810   GetHWTimerCountWord
+0000881c   TimerHWHalt
+00008828   RegisterHWTimerExpiry
+00008832   RocketRegRead
+00008988   RocketRegWrite
+00008a5e   ApiInit
+00008abe   ApiAutoIncrementOverried
+00008aee   ApiRegRead
+00008b18   ApiRegisterHandlers
+00008b40   ApiInterruptHost
+00008b64   ApiRegWrite
+00008b88   RocketPmicStopReceived
+00008bac   RocketRegStopReceived
+00008bd0   ApiStartReceived
+00008bee   ApiStopReceived
+00008c0c   ApiUnregisterHandlers
+00008c44   RocketPmicWrite
+00008c5c   ApiClearInterruptHost
+00008c72   RocketPmicRead
+00008db4   SetTimer
+00008f34   StopTimer
+00008fb4   TimerInit
+00008fe0   RegisterTimerExpiry
+00009488   I2cWriteRead
+00009542   I2cWrite
+00009674   UsciForceClockStretch
+00009778   I2cInit
+000097aa   I2cInitInternalBus
+000097d8   I2cRegisterExtCb
+00009802   I2cUninit
+00009814   InternalUsciReset
+00009856   i2cBusMapping
+0000985c   SetVCoreLevel
+000098c4   ConfigureFll
+0000991e   PreEnterDeepSleep
+00009960   ConfigureXt1External
+00009990   SCSleep
+000099b6   VCoreLevel
+000099c0   EventLogAdd
+00009a36   EventLogInit
+00009a84   EventLogCapture
+00009aae   EventLogAddN
+00009ad6   SavedEventLogRead
+00009afc   SavedEventLogRewind
+00009b1e   SavedEventLogExists
+00009b2c   QueueCallInt
+00009bac   ExecuteCall
+00009bfe   CallQueueInit
+00009c0c   GetQueueCount
+00009c12   SpiInit
+00009c76   PmicRead
+00009cd0   PmicWrite
+00009d1a   UsciA0RxTxIsr
+00009d22   UsciA1RxTxIsr
+00009d2a   UsciA2RxTxIsr
+00009d32   spiBusMapping
+00009d34   RegisterIntHandler
+00009dac   InterruptControllerInit
+00009dc6   RegisterIntHandlerReal
+00009dd8   AdcConvertHw
+00009e56   AdcInitHw
+00009f30   AdcCompleteIsrHw
+00009f66   AdcRawRegRead
+00009fc0   AdcRawConvertVsys
+00009fda   AdcRawRegWrite
+00009ff0   AdcRawStopReceived
+0000a004   AdcHalt
+0000a2be   UpdaterRegWrite
+0000a320   CodeUpdateStateInit
+0000a376   IsImageValid
+0000a3ca   UpdaterStopReceived
+0000a3f4   UpdaterRegRead
+0000a410   UpdaterStartReceived
+0000a56e   HostCtrlPmicRegisterReset
+0000a650   HostCtrlInitiateReset
+0000a6f6   HostCtrlGpioReset
+0000a77c   HostCtrlDisableSupplies
+0000a7f4   HostCtrlInit
+0000a83a   HostCtrlPowerLost
+0000a84c   SupplySequenceRun
+0000a854   HostCtrlGetResetFlags
+0000a85a   HostCtrlGetResetReason
+0000a862   HostCtrlTimerExpiry
+0000ab6c   SysEnIsr
+0000abb0   HostCtrlGpioResetProc
+0000ac10   HostCtrlInitProc
+0000ac32   HostCtrlPrepResetProc
+0000ac48   HostCtrlTimerHandler
+0000ac54   HostCtrlUpdateState
+0000ac5a   FlashWriteBuffer
+0000ad12   FlashWrite
+0000ad74   FlashEraseSegment
+0000aed0   PmicIntCtrlInit
+0000b08c   PmicIntctrlRegRead
+0000b0f6   PmicRegisterIntHandler
+0000b126   PmicInterruptEnable
+0000b154   PmicIntCtrlHostUninit
+0000b17c   PmicInterruptDisable
+0000b1a4   PmicUpdateIntMaskRegisters
+0000b1be   PmicIntctrlRegWrite
+0000b1ee   GenerateCrc16
+0000b204   L_LSR
+0000b216   L_LSR_15
+0000b21c   L_LSR_14
+0000b222   L_LSR_13
+0000b228   L_LSR_12
+0000b22e   L_LSR_11
+0000b234   L_LSR_10
+0000b23a   L_LSR_9
+0000b240   L_LSR_8
+0000b246   L_LSR_7
+0000b24c   L_LSR_6
+0000b252   L_LSR_5
+0000b258   L_LSR_4
+0000b25e   L_LSR_3
+0000b264   L_LSR_2
+0000b26a   L_LSR_1
+0000b272   __divul
+0000b272   __remul
+0000b2ca   L_LSL
+0000b2da   L_LSL_15
+0000b2de   L_LSL_14
+0000b2e2   L_LSL_13
+0000b2e6   L_LSL_12
+0000b2ea   L_LSL_11
+0000b2ee   L_LSL_10
+0000b2f2   L_LSL_9
+0000b2f6   L_LSL_8
+0000b2fa   L_LSL_7
+0000b2fe   L_LSL_6
+0000b302   L_LSL_5
+0000b306   L_LSL_4
+0000b30a   L_LSL_3
+0000b30e   L_LSL_2
+0000b312   L_LSL_1
+0000b318   _auto_init
+0000b35e   I_ASR
+0000b36a   I_ASR_15
+0000b36c   I_ASR_14
+0000b36e   I_ASR_13
+0000b370   I_ASR_12
+0000b372   I_ASR_11
+0000b374   I_ASR_10
+0000b376   I_ASR_9
+0000b378   I_ASR_8
+0000b37a   I_ASR_7
+0000b37c   I_ASR_6
+0000b37e   I_ASR_5
+0000b380   I_ASR_4
+0000b382   I_ASR_3
+0000b384   I_ASR_2
+0000b386   I_ASR_1
+0000b38a   I_LSL
+0000b396   I_LSL_15
+0000b398   I_LSL_14
+0000b39a   I_LSL_13
+0000b39c   I_LSL_12
+0000b39e   I_LSL_11
+0000b3a0   I_LSL_10
+0000b3a2   I_LSL_9
+0000b3a4   I_LSL_8
+0000b3a6   I_LSL_7
+0000b3a8   I_LSL_6
+0000b3aa   I_LSL_5
+0000b3ac   I_LSL_4
+0000b3ae   I_LSL_3
+0000b3b0   I_LSL_2
+0000b3b2   I_LSL_1
+0000b3b6   _c_int00
+0000b3b6   _c_int00_noexit
+0000b3dc   __mpyl
+0000b402   __divu
+0000b402   __remu
+0000b418   memset
+0000b42c   __mpyi
+0000b440   memcpy
+0000b452   func_epilog_7
+0000b454   func_epilog_6
+0000b456   func_epilog_5
+0000b458   func_epilog_4
+0000b45a   func_epilog_3
+0000b45c   func_epilog_2
+0000b45e   func_epilog_1
+0000b462   C$$EXIT
+0000b462   abort
+0000b466   _reset_vector
+0000b468   _nop
+0000b46a   IsrVect0
+0000b470   IsrVect1
+0000b476   IsrVect2
+0000b47c   IsrVect4
+0000b482   IsrVect3
+0000b48a   IsrVect5
+0000b48a   Vect5Base
+0000b492   IsrVect6
+0000b49a   IsrVect7
+0000b4a2   IsrVect8
+0000b4aa   IsrVect9
+0000b4b2   IsrVect10
+0000b4ba   IsrVect11
+0000b4c2   IsrVect12
+0000b4ca   IsrVect13
+0000b4d2   IsrVect14
+0000b4da   IsrVect15
+0000b4e2   IsrVect16
+0000b4ea   IsrVect17
+0000b4f2   IsrVect18
+0000b51e   Max8649Init
+0000b552   Max8649Write
+0000b574   RocketMetrics
+0000b5b2   __cinit__
+0000b5b2   cinit
+0000b654   _end_of_boot_image
+0000de00   AppImageInfo
+0000de00   _start_of_app_image
+0000de10   LedTransitionEvent
+0000e3b0   UpdateTransitionInfo
+0000e730   KeyVolToggle
+0000e8ca   LedInit
+0000eacc   AdcInit
+0000eb40   SetLedColourHw
+0000ebb0   UtcInit
+0000ec7a   PwrSupplyToggle
+0000ee14   PwrSupplyDisable
+0000ee60   KeyVolumeResetEnable
+0000eea6   PwrSupplyEnable
+0000eeec   PadGetState
+0000ef30   UtcSetTime
+0000ef74   PwrSupplyToggleRegister
+0000efb6   AdcInhibitChange
+0000eff6   LedRegWrite
+0000f036   Max8649SetHugeVoltage
+0000f076   AdcUninit
+0000f124   I2cRlyInit
+0000f194   HostCtrlPaSlumpInit
+0000f22e   HostCtrlPwrInit
+0000f25e   SetLedColourPattern
+0000f2ec   AppEntrypoint
+0000f318   GpioRelayInit
+0000f340   PwrI2cRegRead
+0000f364   PwrI2cRegWrite
+0000f388   FGInit
+0000f3a8   HostCtrlPwrI2cInit
+0000f3e8   PaSlumpConfigAdcEngine
+0000f406   PaSlumpConversionComplete
+0000f424   PaSlumpStopConversion
+0000f442   AppExitpoint
+0000f45e   HostCtrlPwrUninit
+0000f4b2   Max8649UseTransition
+0000f4cc   UtcDisable
+0000f4e6   LedStopReceived
+0000f52a   UtcBackup
+0000f53c   I2cRlyUninit
+0000f54c   PaSlumpStartConversion
+0000f55c   HostCtrlPaSlumpUninit
+0000f56a   LedInitHw
+0000f578   LedRegRead
+0000f594   IsKeyVolumeResetEnabled
+0000f5a0   StopLedColourPattern
+0000f5ac   UtcIsDisabled
+0000f5c4   GetLedColourHw
+0000f5ce   GpioRelayUninit
+0000f5d6   HostCtrlPwrI2cUninit
+0000f5de   RtcHandler
+0000f5ec   EcoModeEnHandler
+0000f5f2   GpsTcxoEnHandler
+0000f5f8   KeyVolHandler
+0000f5fe   LedStartReceived
+0000f604   LedTransitionEventCb
+0000f60a   Max8649UpdTransitionVoltage
+0000f610   UtcGetTime
+0000f616   FGUninit
+0000f800   _end_of_app_image
+0000f800   _end_of_boot_sec
+ffffffff   __binit__
+ffffffff   __c_args__
+ffffffff   __pinit__
+ffffffff   binit
+ffffffff   pinit
+
+[365 symbols]

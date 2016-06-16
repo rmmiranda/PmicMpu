@@ -1,0 +1,5 @@
+SourcePaths: src
+Modules: bootloader rocket_crc msp430_flash metrics
+CFlags: -Iinclude -Iobj/boldr016u768_rev1/nessus_release -Iobj/boldr016u768_rev1/loader_boldr016u768_rev1 -Iconfig/boldr016u768_rev1 -I. -Imsp430ti321/include
+Libraries:
+Scatter: scatter/rocket_pmu430.cmd

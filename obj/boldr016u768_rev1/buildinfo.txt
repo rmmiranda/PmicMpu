@@ -1,0 +1,5 @@
+SourcePaths: src
+Modules: init timer_mux eventlog msgque hostctrl_common hostctrl_tavormg pmic_max8649 metrics rocket_gpio rocket_misc rocket_timer rocket_api rocket_i2c rocket_slowclock rocket_spi msp430_flash rocket_pmic_intctrl rocket_intvector rocket_updater rocket_crc rocket_adc_hw msp430_inout
+CFlags: -Iinclude -Iobj/boldr016u768_rev1 -Iconfig/boldr016u768_rev1 -I. -Imsp430ti321/include
+Libraries: --library=rts430.lib
+Scatter: scatter/rocket_pmu430.cmd

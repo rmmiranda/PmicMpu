@@ -1,0 +1,8 @@
+// Hardware definitions for the Lagavulin evaluation board
+
+#define PROCESSOR_FAMILY_MAXQ               1
+#define PROCESSOR_MQ31                      1
+#define PLATFORM_RIMROUNDROCK               1
+#define DEVID_UPDATER_SUPPORT               1
+#define HOSTPROCESSOR_TAVOR_MG              1
+#define SCATTER lagavulin_lnkmq31.xcl

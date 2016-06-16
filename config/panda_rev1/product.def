@@ -1,0 +1,11 @@
+// Hardware definitions for the Rocket evaluation board
+
+#define PROCESSOR_FAMILY_MSP430             1
+#define PROCESSOR_PMU430                    1
+#define PLATFORM_RIMPANDA                   1
+#define DEVID_UPDATER_SUPPORT               1
+#define HOSTPROCESSOR_OMAP4430              1
+#define RIM_TPS62361                        1
+#define OMAP_SYSBOOT_USB_UART_MMC1_MMC2     1
+#define SCATTER rocket_pmu430.cmd
+

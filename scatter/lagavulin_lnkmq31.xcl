@@ -1,0 +1,111 @@
+/***********************************************************************
+ *                      -LNKMQ31USR.XCL-
+ *
+ *      XLINK command file to be used with the MAXQ C-compiler.
+ *
+ *      Usage:  xlink  your_file(s)
+ *
+ *      Copyright 2004-2006 IAR Systems. All Rights Reserved.
+ *
+ *      $Revision: 1330 $
+ *
+ ************************************************************************/
+
+/*        Define CPU.           */
+
+-cmaxq
+
+/************************************************************************
+ *      Allocate reset vector area segment which is mapped to ROM.
+ *
+ *      This segment contains CSTARTUP, interrupt vectors and such.
+ *
+ ************************************************************************/
+-Z(CODE)RESET=6000-601B
+-Z(CODE)DEBUG=601C-603F
+-Z(CODE)INTVEC=6040-613F
+-Z(CODE)RCODE=6140-FFFF
+
+/************************************************************************
+ *      Make constant data occupy space in both CODE and DATA segments.
+ *
+ *      In the DATA segment, they occupy addresses above 8000. They
+ *      are accessible from the utility ROM. Pretend the constant data
+ *      is located in the data segment to get correct addresses for
+ *      labels.
+ *
+ ************************************************************************/
+-P(CODE)DATA16_C,DATA8_ID,DATA16_ID,CHECKSUM,CONST
+
+/************************************************************************
+ *      Allocate main code segment.
+ *
+ *      Segment parts may be rearranged.
+ *
+ ************************************************************************/
+-P(CODE)CODE=6140-FFFF
+-P(CODE)FARCODE=10000-1FFFF
+-P(CODE)LCODE=6140-1FFFF
+
+-Z(CODE)PRIMARY_CODE=6140-11FFF
+-Z(CODE)SECONDARY_CODE=12000-1FFFF
+
+-Z(CODE)SYS_SECTOR=140-3FFF
+-Z(CODE)ULDR_SECTOR=4000-5FFF
+-Z(CODE)UAPP_SECTOR=6000-1FFFF
+-Z(CODE)UPWD_SECTOR=6020-603F
+
+-Z(CODE)BOOT_MANAGER=3E00-3FFF
+
+-Z(CODE)BOOT_IMAGE_INFO=11FEA-11FFB
+-Z(CODE)APP_IMAGE_INFO=1FFEA-1FFFB
+-Z(CODE)BOOT_LOADER_MSG=1FFFC-1FFFF
+
+/************************************************************************
+ *      Allocate data segments.
+ *
+ *      The stack grows toward low addresses from the top of the STACK
+ *      segment. The heap grows towards high addresses and starts in the
+ *      bottom of the HEAP segment. They occupy the same memory area.
+ *
+ *      The data segments begin at address 2 because in C, address 0
+ *      is reserved for null pointers. If you must use address 0, locate
+ *      a small simple variable there instead of changing this link
+ *      script. Also, the compiler relies on not accidentally flowing under
+ *      zero when auto decrementing.
+ *
+ ************************************************************************/
+
+// MQ31
+
+// RAM addresses 0x00 to 0x9F are reserved for the ModelGauge code.
+// Addresses 0xA0 to 0xA1 are reserved for the I2C Loader.
+-Z(DATA)DATA16_I,DATA16_Z,DATA16_N=A2-1FC0
+-Z(DATA)CSTACK+_CSTACK_SIZE#800-1FC0
+-Z(DATA)HEAP+_HEAP_SIZE=800-1FC0
+
+-D_CSTACK_SIZE=1F4
+-D_HEAP_SIZE=1F4
+
+/************************************************************************
+ *      Define utility ROM labels.
+ ************************************************************************/
+
+// MQ31
+-D?UTIL_MOVE_DP0=10026          // 0x08013
+-D?UTIL_MOVE_DP0_INC=1002A      // 0x08015
+-D?UTIL_MOVE_DP0_DEC=1002E      // 0x08017
+-D?UTIL_MOVE_DP1=10032          // 0x08019
+-D?UTIL_MOVE_DP1_INC=10036      // 0x0801B
+-D?UTIL_MOVE_DP1_DEC=1003A      // 0x0801D
+-D?UTIL_MOVE_FP=1003E           // 0x0801F
+-D?UTIL_MOVE_FP_INC=10042       // 0x08021
+-D?UTIL_MOVE_FP_DEC=10046       // 0x08023
+-D?UTIL_CRC16=10052             // 0x08029
+-D?UTIL_FLASH_WRITE=1005E       // 0x0802F
+-D?UTIL_FLASH_ERASE_PAGE=10062  // 0x08031
+
+/************************************************************************/
+/*      End of File                                                     */
+/************************************************************************/
+

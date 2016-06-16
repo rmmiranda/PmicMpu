@@ -1,0 +1,18 @@
+// Hardware definitions for the Rocket evaluation board
+
+#define PROCESSOR_FAMILY_MSP430             1
+#define PROCESSOR_PMU430                    1
+#define PLATFORM_RIMCURVER049               1
+#define DEVID_UPDATER_SUPPORT               1
+#define HOSTPROCESSOR_TAVOR_MG              1
+#define RIM_TPS62361                        1
+#define RIM_LDO1_SUPPLIES_RF                1
+#define RIM_KEYVOL_RESET                    1
+#define RIM_KEYVOL_ENABLE                   1
+#define USB_500mA_REQUIRED                  1
+#define RIM_CHARGING_CONTACTS               1
+#define RIM_FAST_RESET                      1
+#define END_KEY_PULLUP_ENABLE               1
+#define FORCE_PP_ENCODING                   1
+#define SCATTER rocket_pmu430.cmd
+

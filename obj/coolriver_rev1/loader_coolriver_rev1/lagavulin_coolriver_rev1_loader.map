@@ -1,0 +1,180 @@
+################################################################################
+#                                                                              #
+#      IAR Universal Linker V5.0.2.5/W32                                       #
+#                                                                              #
+#           Link time     =  28/Sep/2011  15:06:05                             #
+#           Target CPU    =  MAXQ                                              #
+#           List file     =  obj\coolriver_rev1\loader_coolriver_rev1\lagavuli #
+#                            n_coolriver_rev1_loader.map                       #
+#           Output file 1 =  C:\workspace\perforce\lagavulin\armos\rocket\obj\ #
+#                            coolriver_rev1\loader_coolriver_rev1\lagavulin_co #
+#                            olriver_rev1_loader.out                           #
+#                            Format: intel-extended                            #
+#           Output file 2 =  C:\workspace\perforce\lagavulin\armos\rocket\obj\ #
+#                            coolriver_rev1\loader_coolriver_rev1\lagavulin_co #
+#                            olriver_rev1_loader.d66                           #
+#                            Format: debug                                     #
+#                            UBROF version 10.0.3                              #
+#                            Using library modules for C-SPY (-rt)             #
+#           Command line  =  -S -f scatter/lagavulin_lnkmq31.xcl (-cmaxq       #
+#                            -Z(CODE)RESET=6000-601B -Z(CODE)DEBUG=601C-603F   #
+#                            -Z(CODE)INTVEC=6040-613F                          #
+#                            -Z(CODE)RCODE=6140-FFFF                           #
+#                            -P(CODE)DATA16_C,DATA8_ID,DATA16_ID,CHECKSUM,CONS #
+#                            T                                                 #
+#                            -P(CODE)CODE=6140-FFFF                            #
+#                            -P(CODE)FARCODE=10000-1FFFF                       #
+#                            -P(CODE)LCODE=6140-1FFFF                          #
+#                            -Z(CODE)PRIMARY_CODE=6140-11FFF                   #
+#                            -Z(CODE)SECONDARY_CODE=12000-1FFFF                #
+#                            -Z(CODE)SYS_SECTOR=140-3FFF                       #
+#                            -Z(CODE)ULDR_SECTOR=4000-5FFF                     #
+#                            -Z(CODE)UAPP_SECTOR=6000-1FFFF                    #
+#                            -Z(CODE)UPWD_SECTOR=6020-603F                     #
+#                            -Z(CODE)BOOT_MANAGER=3E00-3FFF                    #
+#                            -Z(CODE)BOOT_IMAGE_INFO=11FEA-11FFB               #
+#                            -Z(CODE)APP_IMAGE_INFO=1FFEA-1FFFB                #
+#                            -Z(CODE)BOOT_LOADER_MSG=1FFFC-1FFFF               #
+#                            -Z(DATA)DATA16_I,DATA16_Z,DATA16_N=A2-1FC0        #
+#                            -Z(DATA)CSTACK+_CSTACK_SIZE#800-1FC0              #
+#                            -Z(DATA)HEAP+_HEAP_SIZE=800-1FC0                  #
+#                            -D_CSTACK_SIZE=1F4 -D_HEAP_SIZE=1F4               #
+#                            -D?UTIL_MOVE_DP0=10026                            #
+#                            -D?UTIL_MOVE_DP0_INC=1002A                        #
+#                            -D?UTIL_MOVE_DP0_DEC=1002E                        #
+#                            -D?UTIL_MOVE_DP1=10032                            #
+#                            -D?UTIL_MOVE_DP1_INC=10036                        #
+#                            -D?UTIL_MOVE_DP1_DEC=1003A                        #
+#                            -D?UTIL_MOVE_FP=1003E -D?UTIL_MOVE_FP_INC=10042   #
+#                            -D?UTIL_MOVE_FP_DEC=10046 -D?UTIL_CRC16=10052     #
+#                            -D?UTIL_FLASH_WRITE=1005E                         #
+#                            -D?UTIL_FLASH_ERASE_PAGE=10062)                   #
+#                            -Iiarmaxq230/lib                                  #
+#                            obj/coolriver_rev1/loader_coolriver_rev1/mq31_boo #
+#                            tmanager.o                                        #
+#                            -l                                                #
+#                            obj/coolriver_rev1/loader_coolriver_rev1/lagavuli #
+#                            n_coolriver_rev1_loader.map                       #
+#                            -xms                                              #
+#                            -Ointel-extended=obj/coolriver_rev1/loader_coolri #
+#                            ver_rev1/lagavulin_coolriver_rev1_loader.out      #
+#                            -rt                                               #
+#                                                                              #
+#                           Copyright (C) 1987-2010 IAR Systems AB.            #
+################################################################################
+
+
+
+
+
+                ****************************************
+                *                                      *
+                *           CROSS REFERENCE            *
+                *                                      *
+                ****************************************
+
+                  There are no program entries.
+
+
+
+
+                ****************************************
+                *                                      *
+                *              MODULE MAP              *
+                *                                      *
+                ****************************************
+
+
+  DEFINED ABSOLUTE ENTRIES
+    *************************************************************************
+
+  DEFINED ABSOLUTE ENTRIES
+  PROGRAM MODULE, NAME : ?ABS_ENTRY_MOD
+
+Absolute parts
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           ?UTIL_FLASH_ERASE_PAGE
+                                   00010062        bootStart (bootManager)
+           ?UTIL_FLASH_WRITE       0001005E        bootStart (bootManager)
+           ?UTIL_CRC16             00010052        bootStart (bootManager)
+           ?UTIL_MOVE_FP_DEC       00010046 
+           ?UTIL_MOVE_FP_INC       00010042 
+           ?UTIL_MOVE_FP           0001003E 
+           ?UTIL_MOVE_DP1_DEC      0001003A 
+           ?UTIL_MOVE_DP1_INC      00010036 
+           ?UTIL_MOVE_DP1          00010032 
+           ?UTIL_MOVE_DP0_DEC      0001002E 
+           ?UTIL_MOVE_DP0_INC      0001002A        bootStart (bootManager)
+           ?UTIL_MOVE_DP0          00010026 
+           _HEAP_SIZE              01F4 
+           _CSTACK_SIZE            01F4 
+    *************************************************************************
+
+  FILE NAME : C:\workspace\perforce\lagavulin\armos\rocket\obj\coolriver_rev1\loader_coolriver_rev1\mq31_bootmanager.o
+  PROGRAM MODULE, NAME : bootManager
+
+  SEGMENTS IN THE MODULE
+  ======================
+BOOT_MANAGER
+  Relative segment, address: CODE 3E00 - 3E01 (0x2 bytes), align: 0
+  Segment part 1. ROOT.
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           bootManager             3E00 
+    -------------------------------------------------------------------------
+BOOT_MANAGER
+  Relative segment, address: CODE 3E40 - 3F57 (0x118 bytes), align: 0
+  Segment part 2. ROOT.
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           bootStart               3E60 
+           copyImage               3ED2 
+           copyImage_Loop          3EDE 
+           eraseApplication        3F24 
+           eraseImage              3F1C 
+           erasePages              3F2C 
+           erasePages_Next         3F38 
+           isApplicationCode       3EC8 
+           isBootUpdateAvailable   3E8C 
+           isCRCValid              3E96 
+           isCRCValid_Loop         3EA6 
+           isPageEmpty             3F40 
+           isPageEmpty_Exit        3F54 
+           isPageEmpty_Loop        3F4A 
+           mainAppJump             3EC4 
+           setValidFalse           3EBE 
+           setValidTrue            3EC2 
+           setValidVariable        3EBA 
+           updateToNewCode         3E7C 
+           verifyImage             3EEE 
+           verifyImage_Exit        3F14 
+           verifyImage_Loop        3EFC 
+           verifyImage_cont        3F08 
+
+
+
+
+                ****************************************
+                *                                      *
+                *      SEGMENTS IN ADDRESS ORDER       *
+                *                                      *
+                ****************************************
+
+
+SEGMENT              SPACE    START ADDRESS   END ADDRESS     SIZE  TYPE  ALIGN
+=======              =====    =============   ===========     ====  ====  =====
+BOOT_MANAGER         CODE              3E00 - 3E01               2   rel    0
+BOOT_MANAGER         CODE              3E40 - 3F57             118   rel    0
+
+                ****************************************
+                *                                      *
+                *        END OF CROSS REFERENCE        *
+                *                                      *
+                ****************************************
+
+ 0 bytes of CODE memory (+ 282 absolute )
+
+Errors: none
+Warnings: none
+

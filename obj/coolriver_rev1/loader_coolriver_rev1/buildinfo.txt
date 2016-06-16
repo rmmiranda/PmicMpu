@@ -1,0 +1,5 @@
+SourcePaths: src
+Modules: mq31_bootmanager
+CFlags: -Iinclude -Iobj/coolriver_rev1/nessus_release -Iobj/coolriver_rev1/loader_coolriver_rev1 -Iconfig/coolriver_rev1 -I. -Iiarmaxq230/include -Iiarmaxq230/include/clib
+Libraries:
+Scatter: scatter/lagavulin_lnkmq31.xcl

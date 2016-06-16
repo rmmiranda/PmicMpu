@@ -1,0 +1,584 @@
+MSP430 Code Generation Tools Release Version 3.2.1
+Defect History
+May 2009
+
+------------------------------------------------------------------------------
+Table of Contents
+------------------------------------------------------------------------------
+1. 3.2.1 Fixed Defects
+2. 3.2.0 Fixed Defects
+3. 3.2.0B1 Fixed Defects
+4. Current Known Issues
+
+
+------------------------------------------------------------------------------
+1. 3.2.1 Fixed Defects
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00030215
+------------------------------------------------------------------------------
+
+Summary            : C I/O cannot support ftell/fseek for DOS format files
+		     opened in text mode
+
+Fixed in           : 3.2.1
+Severity           : S2 - Major
+Affected Component : Runtime Support Libraries (RTS)
+
+Description: 
+Use of ftell and fseek on DOS formatted files is not supported in text 
+mode, with buffered I/O.  The avoid this error the run-time libraries
+can be rebuilt with unbuffered I/O by defining the following macro 
+_TI_FORCE_UNBUFFERED_TEXT_IO.  This is defined by adding this switch
+
+-D_TI_FORCE_UNBUFFERED_TEXT_IO
+
+to the shell. 
+
+Workaround: 
+1. Open the DOS file in binary mode.
+2. Use one of many DOS-to-Unix file converters to strip
+carriage-returns 
+from the input file.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00030349
+------------------------------------------------------------------------------
+
+Summary            : Symbol details of enumerated variable are lost in COFF file
+		     when optimization is enabled
+
+Fixed in           : 3.2.1
+Severity           : S2 - Major
+Affected Component : Optimizer
+
+Description: 
+A variable of an enumerated type will not be noted as such after 
+optimisation;  instead, it will have an integral type.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00031032
+------------------------------------------------------------------------------
+
+Summary            : null pointers are dereferenced when using optimizer with
+		     -mf
+
+Fixed in           : 3.2.1
+Severity           : S2 - Major
+Affected Component : C/C++ Compiler (cl)
+
+Description: 
+A loop like
+
+  for ...
+    if (e != NULL)
+      *e += ...
+
+may compile incorrectly in such a way as to allow *e to happen outside 
+the test for NULL.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00031080
+------------------------------------------------------------------------------
+
+Summary            : Bad relocation of expression referencing symbol in same
+		     code section and in an object file resulting from partial 
+		     link
+
+Fixed in           : 3.2.1
+Severity           : S2 - Major
+Affected Component : ELF Linker
+
+Description: 
+When the linker creates a COFF format file using an input file 
+that was the result of previous partial link (-r), a reference to a 
+symbol from within the file resulting from the partial link may be 
+calculated incorrectly.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00031090
+------------------------------------------------------------------------------
+
+Summary            : Compiler mistakenly ignores volatile when applied to a
+		     structure
+
+Fixed in           : 3.2.1
+Severity           : S2 - Major
+Affected Component : C/C++ Compiler (cl)
+
+Description: 
+A write to a field in a volatile struct from within a loop may be 
+improperly optimised to only write the final value.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00031208
+------------------------------------------------------------------------------
+
+Summary            : generated code for function is not ending in a RET
+
+Fixed in           : 3.2.1
+Severity           : S2 - Major
+Affected Component : C/C++ Compiler (cl)
+
+Description: 
+At optimization level -o2 or above the compiler's 
+code size optimization pass that utilizes procedure abstraction may 
+generate incorrect code for C functions declared as interrupt routines.
+ 
+Affected interrupt functions will likely result in runtime errors if 
+called. As a workaround, interrupt routines should be compiled at 
+optimization level 0 or 1.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00031215
+------------------------------------------------------------------------------
+
+Summary            : Compiler generates incorrect call to wrong library divide
+		     routine
+
+Fixed in           : 3.2.1
+Severity           : S1 - Critical / PS
+Affected Component : C/C++ Compiler (cl)
+
+Description: 
+The compiler could generate an incorrect divide routine call in some 
+expressions that mix signed and unsigned types.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00031217
+------------------------------------------------------------------------------
+
+Summary            : macro subsitution failure 
+
+Fixed in           : 3.2.1
+Severity           : S2 - Major
+Affected Component : Assembler
+
+Description: 
+If a label is used an argument to a macro invocation and the macro 
+definition has parameters with the same name the assembler may 
+incorrectly do substitution symbol expansion if the parameter is mapped
+to another argument.  
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00031282
+------------------------------------------------------------------------------
+
+Summary            : MSP430 Linker Option ( --fill_value ) missing in CGT3.2 
+                     and may not function as expected
+
+Fixed in           : 3.2.1
+Severity           : S2 - Major
+Affected Component : Linker
+
+Description: 
+The --fill_value option currently writes 32-bit values as the fill
+value.  For example, if a fill value of 0xABCD is specified the linker will
+fill holes 32-bits at a time with the value 0x0000ABCD. 
+
+As a workaround 'duplicate' a 16-bit value to occupy 32-bits. For 
+example, if the desired fill value is '--fill_value=0xABCD' specify 
+'--fill_value=0xABCDABCD'. Alternatively, specify the fill value in the
+linker command file.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00031626
+------------------------------------------------------------------------------
+
+Summary            : Optimizer (O2 or O3) generates Internal Error
+
+Fixed in           : 3.2.1
+Severity           : S2 - Major
+Affected Component : Optimizer
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00031726
+------------------------------------------------------------------------------
+
+Summary            : Assembler does not detect wrong addressing mode for RRUX
+		     instruction
+
+Fixed in           : 3.2.1
+Severity           : S2 - Major
+Affected Component : Assembler
+
+Description: 
+The assembler did not detect that the destination operand on a RRUX 
+instruction was not a register.  The RRUX is valid for register Mode
+only.
+
+
+------------------------------------------------------------------------------
+2. 3.2.0 Fixed Defects
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00030042
+------------------------------------------------------------------------------
+
+Summary            : MSP430 CPU  Bug Workaround 1144
+
+Fixed in           : 3.2.0
+Severity           : S2 - Major
+Affected Component : Assembler
+
+Description: 
+Workaround/warning enabled through the --silicon_errata=CPU23 shell option.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00030045
+------------------------------------------------------------------------------
+
+Summary            : MSP430 CPU  Bug Workaround 1057/CPU18
+
+Fixed in           : 3.2.0
+Severity           : S2 - Major
+Affected Component : C/C++ Compiler (cl)
+
+Description: 
+Workaround/warning enabled through the --silicon_errata=CPU18 shell option.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00030047
+------------------------------------------------------------------------------
+
+Summary            : MSP430 CPU  Bug Workaround 519/CPU15
+
+Fixed in           : 3.2.0
+Severity           : S2 - Major
+Affected Component : C/C++ Compiler (cl)
+
+Description: 
+Workaround/warning enabled through the --silicon_errata=CPU15 shell option.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00030049
+------------------------------------------------------------------------------
+
+Summary            : MSP430 CPU  Bug Workaround 942
+
+Fixed in           : 3.2.0
+Severity           : S2 - Major
+Affected Component : Assembler
+
+Description: 
+Workaround/warning enabled through the --silicon_errata=CPU21 shell option.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00030168
+------------------------------------------------------------------------------
+
+Summary            : DWARF line number entry encoding error
+
+Fixed in           : 3.2.0
+Severity           : S2 - Major
+Affected Component : Assembler
+
+Description: 
+The DWARF line number information for the last line number entry, 
+representing the last line of the function, can be encoded incorrectly 
+depending on the values of the other line number entries.  This is more
+likely for functions with very few line number entries.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00030362
+------------------------------------------------------------------------------
+
+Summary            : Optimizer generates segmentation fault with -o2 and higher
+
+Fixed in           : 3.2.0
+Severity           : S2 - Major
+Affected Component : Optimizer
+
+Description: 
+A loop nest which may be unrolled-and-jammed -- which requires a
+specific set of conditions, but is essentially simple loops which can legally
+have the outer loop unrolled -- whose outer loop's initial value is not 
+explicitly set in the loop may cause the optimiser to crash.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00030635
+------------------------------------------------------------------------------
+
+Summary            : Incorrect optimization of constant performed with -o2 and
+		     higher
+
+Fixed in           : 3.2.0
+Severity           : S2 - Major
+Affected Component : Optimizer
+
+Description: 
+A reference to a field of a union, optionally included in some other 
+structure type, may be replaced with an incorrect value if the variable
+is auto-initialised and const.	Ie, given "T const x = {1, 2};" where T
+is a union, a later "x.a" may be replaced by 2 even though that doesn't
+correspond to the proper field.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00030700
+------------------------------------------------------------------------------
+
+Summary            : Symbol specified with .label directive within assembly
+		     source file gets linked to run address instead of load 
+		     address
+
+Fixed in           : 3.2.0
+Severity           : S2 - Major
+Affected Component : C/C++ Compiler (cl)
+
+Description: 
+Symbol specified with .label directive within assembly source file gets
+linked to run address instead of load address
+
+
+------------------------------------------------------------------------------
+3. 3.2.0B1 Fixed Defects
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00028799
+------------------------------------------------------------------------------
+
+Summary            : The new linker should provide the same detailed information
+		     as the old linker when the placement fails.
+
+Fixed in           : 3.2.0B1
+Severity           : S2 - Major
+Affected Component : Linker
+
+Description: 
+This bug did not result in any incorrect behavior.  The error messages 
+issued in some cases have been expanded to include the appropriate 
+details.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00028896
+------------------------------------------------------------------------------
+
+Summary            : Optimizer loses track of signed/unsigned distinction in
+		     loop transormation
+
+Fixed in           : 3.2.0B1
+Severity           : S2 - Major
+Affected Component : Optimizer
+
+Description: 
+A loop whose index variable is unsigned and whose increment is
+difficult to divide by (eg, not a power of 2) may not execute the correct 
+number of iterations when the initial value (when counting down) or final 
+value (when counting up) is large enough to overflow the signed type with 
+the same width as the index variable's unsigned type.  In this case, the 
+variable was unsigned-short (16-bit), the loop counted down by 2560,
+and the initial value was 37890.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00028922
+------------------------------------------------------------------------------
+
+Summary            : Optimizer terminates abnormally for all optimization levels
+		     higher than -o0
+
+Fixed in           : 3.2.0B1
+Severity           : S2 - Major
+Affected Component : Optimizer
+
+Description: 
+The optimiser may abort on functions containing "switch" statements
+when the set of case labels is relatively small and compact, the switch has
+a default case, the test expression is a simple variable or memory
+reference, and the lowest label value isn't 0.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00029047
+------------------------------------------------------------------------------
+
+Summary            : Assembler gives segmentation fault for incorrectly written
+		     instruction
+
+Fixed in           : 3.2.0B1
+Severity           : S2 - Major
+Affected Component : Assembler
+
+Description: 
+Assembler sometimes generates a segmentation fault for an incorrectly
+written instruction.
+
+------------------------------------------------------------------------------
+FIXED  SDSCM00029525
+------------------------------------------------------------------------------
+
+Summary            : The linker in late template instantiation opens a file for
+		     READ and then for READ-WRITE without first closing the 
+		     file
+
+Fixed in           : 3.2.0B1
+Severity           : S1 - Critical / PS
+Affected Component : Linker
+
+Description: 
+It is possible that a read of an object file can occur while that same 
+object file has already been opened by the linker for a read.  This
+could cause errors in parallel build systems.  This can only occur with C++ 
+code requiring template instantiations.
+
+
+------------------------------------------------------------------------------
+4. Current Known Issues
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00008248
+------------------------------------------------------------------------------
+
+Summary            : Compilers on PC will not work without TMP set
+Affected Component : C/C++ Compiler (cl)
+
+Description: 
+When compiling on the PC, the code generator cannot find the icode 
+file produced by the parser if the environment variable TMP is no 
+set.  If TMP is set, then all appears well.
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00008251
+------------------------------------------------------------------------------
+
+Summary            : Printf format '%#04x' fills zeros into wrong location
+Affected Component : Code Generator
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00008276
+------------------------------------------------------------------------------
+
+Summary            : Linker accepts illegal address ranges and truncates to a
+		     valid address
+Affected Component : Linker
+
+Description: 
+Linker accepts illegal address ranges and truncates to a valid address 
+without any warnings.
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00008340
+------------------------------------------------------------------------------
+
+Summary            : directory name with '(' character causes linker error
+Affected Component : Shell
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00008465
+------------------------------------------------------------------------------
+
+Summary            : Codegen crash because of void pointer dereference
+Affected Component : Parser
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00008537
+------------------------------------------------------------------------------
+
+Summary            : assembler expression ~(0x80000000) evaulates as 0x80000000
+Affected Component : Code Generator
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00008543
+------------------------------------------------------------------------------
+
+Summary            : Forward reference in .space generates an internal error
+Affected Component : Assembler
+
+Description: 
+
+If you attempt to assemble
+
+ .space 0+a
+b
+a .set 1
+
+the assembler will generate an internal error.
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00008630
+------------------------------------------------------------------------------
+
+Summary            : printf gives wrong value for pointer when its value is
+		     incremented
+Affected Component : C/C++ Compiler (cl)
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00008652
+------------------------------------------------------------------------------
+
+Summary            : pow(2,x) has fairly significant rounding error
+Affected Component : Runtime Support Libraries (RTS)
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00008928
+------------------------------------------------------------------------------
+
+Summary            : Extern inline functions are not supported in the C/C++
+		     Compiler
+Affected Component : Parser
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00008930
+------------------------------------------------------------------------------
+
+Summary            : C++ allows enumerators larger than 'int' but compiler
+		     does not
+Affected Component : Parser
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00009815
+------------------------------------------------------------------------------
+
+Summary            : printf gives wrong value for pointer when its value is
+		     incremented
+Affected Component : C/C++ Compiler (cl)
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00013456
+------------------------------------------------------------------------------
+
+Summary            : fgets in _IONBF mode does not respect size limit
+Affected Component : Runtime Support Libraries (RTS)
+
+Description: 
+The second argument to fgets() is the maximum number of chars to read. 
+In _IONBF mode, fgets() reads until end-of-line, potentially
+overrunning the input buffer.  
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00014430
+------------------------------------------------------------------------------
+
+Summary            : calloc doesn't check arguments to make sure the requested
+		     size is reasonable
+Affected Component : Runtime Support Libraries (RTS)
+
+Description: 
+The function calloc() is required to return a pointer to memory
+representing "nelem" copies of "size" bytes, or NULL if the request
+cannot be satisfied.  However, for some values of "nelem" and "size"
+(specifically when the result of nelem*size wraps around), calloc can
+return a pointer to an object that is not large enough, rather than
+NULL.
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00016782
+------------------------------------------------------------------------------
+
+Summary            : linker is giving a reference error for a dead function
+Affected Component : Linker
+
+------------------------------------------------------------------------------
+KNOWN ISSUE  SDSCM00018691
+------------------------------------------------------------------------------
+
+Summary            : Linker gives misleading warning when dot expressions used
+		     in SECTION directive for .stack section
+Affected Component : Linker
+
+Description: 
+Linker gives the warning warning creating ".stack" section with default size 
+of 0x800; use the -stack option to change the default size even when the 
+application does not link in boot code from RTS lib.

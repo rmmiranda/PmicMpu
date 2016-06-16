@@ -1,0 +1,9 @@
+// Hardware definitions for the Rocket evaluation board
+
+#define PROCESSOR_FAMILY_MSP430             1
+#define PROCESSOR_PMU430                    1
+#define PLATFORM_RIMRUTHERFORD_B            1
+#define ROCKET_LOADER                       1
+#define DEVID_UPDATER_SUPPORT               1
+#define SCATTER rocket_pmu430.cmd
+
