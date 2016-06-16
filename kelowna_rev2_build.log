@@ -1,0 +1,84 @@
+************************************************************
+** Building        : kelowna_rev2
+** Compiling target: pmic_kelowna_rev2.h
+** Object directory: obj/kelowna_rev2
+
+Building dependency file obj/kelowna_rev2/makefile.dep ...
+Generating obj/kelowna_rev2/builder.h
+src/app_stubs.c
+src/init.c
+src/timer_mux.c
+src/eventlog.c
+src/msgque.c
+src/hostctrl_common.c
+src/hostctrl_tavormg.c
+src/pmic_max8649.c
+src/metrics.c
+src/rocket_gpio.c
+src/rocket_misc.c
+src/rocket_timer.c
+src/rocket_api.c
+src/rocket_i2c.c
+src/rocket_slowclock.c
+src/rocket_spi.c
+src/msp430_flash.c
+src/rocket_pmic_intctrl.c
+src/rocket_intvector.c
+src/rocket_updater.c
+src/rocket_crc.c
+src/rocket_adc_hw.c
+src/msp430_inout.s
+
+LINKING            : obj/kelowna_rev2/rocket_partial.out
+<Linking>
+
+src/app_init.c
+src/adc.c
+src/led.c
+src/gpio_relay.c
+src/hostctrl_paslump.c
+src/rocket_led_hw.c
+src/hostctrl_pwr.c
+src/rocket_fuelgauge.c
+src/rocket_i2c_relay.c
+src/rocket_utc.c
+src/rocket_ft.c
+src/hostctrl_pwri2c.c
+
+LINKING            : obj/kelowna_rev2/rocket.out
+<Linking>
+
+TRANSLATING        : rocket.out to rocket_kelowna_rev2.h
+
+obj/kelowna_rev2/rocket.map
+Translating to ASCII-Hex format...
+   "obj/kelowna_rev2/rocket.out"   ==> .text_boot
+   "obj/kelowna_rev2/rocket.out"   ==> .cinit
+   "obj/kelowna_rev2/rocket.out"   ==> .text_app
+    BootImage CRC   0xE570
+    AppImage CRC    0xDD13
+    BootImage Size  0x357C   ( 89% )
+    AppImage Size   0xC00   ( 20% )
+**************************************************************************************
+** Boot/App Image Build Complete:   rocket_kelowna_rev2.h
+**************************************************************************************
+Building dependency file obj/kelowna_rev2/loader_kelowna_rev2/makefile.dep ...
+Generating obj/kelowna_rev2/loader_kelowna_rev2/builder.h
+src/bootloader.c
+src/rocket_crc.c
+src/msp430_flash.c
+src/metrics.c
+
+LINKING            : obj/kelowna_rev2/loader_kelowna_rev2/rocket_kelowna_rev2_loader.out
+<Linking>
+
+TRANSLATING        : obj/kelowna_rev2/loader_kelowna_rev2/rocket_kelowna_rev2_loader.out to rocket_kelowna_rev2_loader.ahx
+
+Translating to ASCII-Hex format...
+   "obj/kelowna_rev2/loader_kelowna_rev2/rocket_kelowna_rev2_loader.out"   ==> .info_sec
+   "obj/kelowna_rev2/loader_kelowna_rev2/rocket_kelowna_rev2_loader.out"   ==> .boot_sec
+   "obj/kelowna_rev2/loader_kelowna_rev2/rocket_kelowna_rev2_loader.out"   ==> .text
+   "obj/kelowna_rev2/loader_kelowna_rev2/rocket_kelowna_rev2_loader.out"   ==> .reset
+**************************************************************************************
+** Bootloader Build Complete:   rocket_kelowna_rev2_loader.ahx
+**************************************************************************************

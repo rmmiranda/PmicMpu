@@ -1,0 +1,12 @@
+"src/pmic_max8649.c", line 46: warning: integer operation result is out of range
+"src/pmic_max8649.c", line 47: warning: integer operation result is out of range
+"src/pmic_max8649.c", line 48: warning: integer operation result is out of range
+"src/pmic_max8649.c", line 49: warning: integer operation result is out of range
+"src/rocket_api.c", line 426: warning: argument of type "void (*)(void)" is incompatible with parameter of type "FUNCTION1"
+"src/rocket_api.c", line 429: warning: argument of type "void (*)(void)" is incompatible with parameter of type "FUNCTION1"
+"src/rocket_api.c", line 467: warning: argument of type "void (*)(void)" is incompatible with parameter of type "FUNCTION1"
+"src/rocket_intvector.c", line 56: warning: nonstandard conversion between pointer to function and pointer to data
+"src/gpio_relay.c", line 25: warning: variable "GpioControl" was declared but never referenced
+"src/rocket_fuelgauge.c", line 31: warning: function "FGIntHandler" was declared but never referenced
+"src/rocket_ft.c", line 151: warning: argument of type "void (*)(void)" is incompatible with parameter of type "FUNCTION1"
+"src/rocket_ft.c", line 243: warning: argument of type "void (*)(void)" is incompatible with parameter of type "FUNCTION1"
